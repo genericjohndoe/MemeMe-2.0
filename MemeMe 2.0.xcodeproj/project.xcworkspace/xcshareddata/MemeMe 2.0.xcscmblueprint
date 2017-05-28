@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "55A610D552B43B9CA22E3714BA0AC703F7425C6D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "55A610D552B43B9CA22E3714BA0AC703F7425C6D" : 9223372036854775807,
+    "F73AB9D98DCAF0977871305A7CC4DAD446A4E1E1" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5276E27B-FD5D-4F86-8D31-D1D0C6F50954",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "55A610D552B43B9CA22E3714BA0AC703F7425C6D" : "MemeMe%202.0\/",
+    "F73AB9D98DCAF0977871305A7CC4DAD446A4E1E1" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MemeMe 2.0",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MemeMe 2.0.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/genericjohndoe\/MemeMe-2.0.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "55A610D552B43B9CA22E3714BA0AC703F7425C6D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/genericjohndoe\/MemeMe-2.0",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F73AB9D98DCAF0977871305A7CC4DAD446A4E1E1"
+    }
+  ]
+}
