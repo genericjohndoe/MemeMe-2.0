@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9F1345911ED76B7B0010CF1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1345901ED76B7B0010CF1B /* AppDelegate.swift */; };
-		9F1345931ED76B7B0010CF1B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1345921ED76B7B0010CF1B /* ViewController.swift */; };
 		9F1345961ED76B7B0010CF1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F1345941ED76B7B0010CF1B /* Main.storyboard */; };
 		9F1345981ED76B7B0010CF1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F1345971ED76B7B0010CF1B /* Assets.xcassets */; };
 		9F13459B1ED76B7B0010CF1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F1345991ED76B7B0010CF1B /* LaunchScreen.storyboard */; };
@@ -24,7 +23,6 @@
 /* Begin PBXFileReference section */
 		9F13458D1ED76B7B0010CF1B /* MemeMe 2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MemeMe 2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F1345901ED76B7B0010CF1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9F1345921ED76B7B0010CF1B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9F1345951ED76B7B0010CF1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9F1345971ED76B7B0010CF1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F13459A1ED76B7B0010CF1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -69,7 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				9F1345901ED76B7B0010CF1B /* AppDelegate.swift */,
-				9F1345921ED76B7B0010CF1B /* ViewController.swift */,
 				9F1345941ED76B7B0010CF1B /* Main.storyboard */,
 				9F1345971ED76B7B0010CF1B /* Assets.xcassets */,
 				9F1345991ED76B7B0010CF1B /* LaunchScreen.storyboard */,
@@ -160,7 +157,6 @@
 				9F1345A71ED79A1E0010CF1B /* MemeCollectionViewController.swift in Sources */,
 				9F1345A31ED790760010CF1B /* Meme.swift in Sources */,
 				9F87F1DC1F2E366C0025C046 /* MemeCollectionViewCell.swift in Sources */,
-				9F1345931ED76B7B0010CF1B /* ViewController.swift in Sources */,
 				9F1345A91ED79B140010CF1B /* MemeTableViewController.swift in Sources */,
 				9F87F1DE1F2EC58E0025C046 /* MemeDetailsView.swift in Sources */,
 				9F1345911ED76B7B0010CF1B /* AppDelegate.swift in Sources */,

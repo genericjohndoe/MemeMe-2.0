@@ -134,6 +134,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let meme = Meme(topText: getText(topTextField), bottomText: getText(bottomTextField), image: imageView.image!, meme: generateMemedImage())
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.memes.append(meme)
+        print("number of memes currently saved \(appDelegate.memes.count)")
     }
     
     func setToolbarEnabled(_ isShown: Bool){
@@ -163,6 +164,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             if completed == true {
                 self.save()
                 self.dismiss(animated: true, completion: nil)
+                print("completion handler ran")
             }
         }
         present(controller, animated: true, completion: nil)

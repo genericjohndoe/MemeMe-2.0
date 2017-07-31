@@ -13,16 +13,26 @@ class MemeTableViewController: UITableViewController {
     var memes: [Meme]!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        memes = appDelegate.memes
+        //memes = appDelegate.memes
+        print("Table View controller view did load")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         //self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        memes = appDelegate.memes
+        let deleteBool = false
+        tableView.setEditing(deleteBool, animated: true)
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,19 +42,17 @@ class MemeTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.appDelegate.memes.count
+        print("Table view elements \(memes.count)")
+        return memes.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableCell", for: indexPath)
         let meme = memes[(indexPath as NSIndexPath).row]
         
         // Set the name and image
