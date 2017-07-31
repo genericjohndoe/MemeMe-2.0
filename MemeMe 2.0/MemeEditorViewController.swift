@@ -18,8 +18,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSStrokeWidthAttributeName: -1.0]
     
-    
-    
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var bottomToolBar: UIToolbar!
     @IBOutlet weak var topToolBar: UIToolbar!
     @IBOutlet weak var imageView: UIImageView!
@@ -30,18 +29,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        shareButton.isEnabled = false
         // Do any additional setup after loading the view, typically from a nib.
-        topTextField.textAlignment = NSTextAlignment.center
-        topTextField.delegate = self.memeTextDelegate
-        topTextField.borderStyle = UITextBorderStyle.none
-        topTextField.defaultTextAttributes = memeTextAttributes
-        topTextField.text = "TOP"
-        
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.borderStyle = UITextBorderStyle.none
-        bottomTextField.delegate = self.memeTextDelegate
-        bottomTextField.textAlignment = NSTextAlignment.center
-        bottomTextField.text = "BOTTOM"
+        configureTextField(topTextField, defaultString: "TOP")
+        configureTextField(bottomTextField, defaultString: "BOTTOM")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,12 +45,17 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         unsubscribeFromKeyboardNotifications()
     }
     
+    func configureTextField(_ textField: UITextField, defaultString: String){
+        textField.text = defaultString
+        textField.delegate = self.memeTextDelegate
+        textField.borderStyle = UITextBorderStyle.none
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = NSTextAlignment.center
+    }
+    
     
     @IBAction func pickImage(_ sender: AnyObject) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        present(pickerController, animated: true, completion: nil)
-        
+        createImagePicker(false)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -67,6 +63,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.image = image
+            imageView.contentMode = .scaleAspectFit
+            shareButton.isEnabled = true
         }
     }
     
@@ -75,15 +73,21 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func takePicture(_ sender: Any) {
+        createImagePicker(true)
+    }
+    
+    func createImagePicker(_ fromCamera: Bool){
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
+        if (fromCamera){
+            imagePicker.sourceType = .camera
+        }
         present(imagePicker, animated: true, completion: nil)
     }
     
     func keyboardWillShow(_ notification:Notification) {
         if (bottomTextField.isEditing) {
-            view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y = -getKeyboardHeight(notification)
         }
     }
     
@@ -96,7 +100,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func keyboardWillHide(_ notification:Notification) {
         if (bottomTextField.isEditing) {
-            view.frame.origin.y += getKeyboardHeight(notification)
+            view.frame.origin.y = 0
         }
     }
     
@@ -114,19 +118,31 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         imageView.image = nil
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
+        shareButton.isEnabled = false
         self.dismiss(animated: true, completion: nil)
     }
     
     
     func save() {
-//        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imageView.image!, meme: generateMemedImage())
-        print("meme saved")
-        
+        func getText(_ textfield: UITextField) -> String{
+            if let string = textfield.text?.capitalized {
+                return string
+            } else{
+                return ""
+            }
+        }
+        let meme = Meme(topText: getText(topTextField), bottomText: getText(bottomTextField), image: imageView.image!, meme: generateMemedImage())
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.memes.append(meme)
+    }
+    
+    func setToolbarEnabled(_ isShown: Bool){
+        topToolBar.isHidden = !isShown
+        bottomToolBar.isHidden = !isShown
     }
     
     func generateMemedImage() -> UIImage {
-        topToolBar.isHidden = true
-        bottomToolBar.isHidden = true
+        setToolbarEnabled(false)
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -134,18 +150,22 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        topToolBar.isHidden = false
-        bottomToolBar.isHidden = false
+        setToolbarEnabled(true)
         
         return memedImage
     }
     
     
     @IBAction func share(_ sender: Any){
-        save()
-        let image = UIImage()
+        let image = generateMemedImage()
         let controller = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-        self.present(controller, animated: true, completion: nil)
+        controller.completionWithItemsHandler = { (activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
+            if completed == true {
+                self.save()
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+        present(controller, animated: true, completion: nil)
     }
 
 

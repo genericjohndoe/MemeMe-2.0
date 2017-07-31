@@ -12,14 +12,24 @@ private let reuseIdentifier = "Cell"
 
 class MemeCollectionViewController: UICollectionViewController {
     
+    var memes: [Meme]!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        memes = appDelegate.memes
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+        let space:CGFloat = 3.0
+        let dimension = (view.frame.size.width - (2 * space)) / 3.0
+        
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -56,12 +66,18 @@ class MemeCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        let meme = self.appDelegate.memes[(indexPath as NSIndexPath).row]
-        cell.imageView?.image = meme.meme
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
+        let meme = memes[(indexPath as NSIndexPath).row]
+        cell.memeImageView?.image = meme.meme
         // Configure the cell
     
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {
+        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailsView") as! MemeDetailsView
+        detailController.meme = memes[(indexPath as NSIndexPath).row]
+        self.navigationController!.pushViewController(detailController, animated: true)
     }
 
     // MARK: UICollectionViewDelegate

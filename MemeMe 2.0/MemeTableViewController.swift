@@ -10,17 +10,19 @@ import UIKit
 
 class MemeTableViewController: UITableViewController {
     
+    var memes: [Meme]!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        memes = appDelegate.memes
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        //self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,25 +45,27 @@ class MemeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        let meme = self.appDelegate.memes[(indexPath as NSIndexPath).row]
+        let meme = memes[(indexPath as NSIndexPath).row]
         
         // Set the name and image
         cell.textLabel?.text = meme.topTextField+"..."+meme.bottomTextField
         cell.imageView?.image = meme.meme
-        
 
         return cell
     }
  
-
-    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailsView") as! MemeDetailsView
+        detailController.meme = memes[(indexPath as NSIndexPath).row]
+        self.navigationController!.pushViewController(detailController, animated: true)
+    }
  
-
     /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
