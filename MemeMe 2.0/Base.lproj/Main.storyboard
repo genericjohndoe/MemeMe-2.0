@@ -116,7 +116,7 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yPh-5m-eJi">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yPh-5m-eJi">
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="aot-ta-xfK" userLabel="Top Text Field">
@@ -190,7 +190,7 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ccV-hd-MDx">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ccV-hd-MDx">
                                 <rect key="frame" x="16" y="64" width="343" height="603"/>
                             </imageView>
                         </subviews>
@@ -269,12 +269,17 @@
                                     <rect key="frame" x="0.0" y="0.0" width="127" height="123"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QbM-s2-SA3">
-                                            <rect key="frame" x="0.0" y="-5" width="127" height="128"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QbM-s2-SA3">
+                                            <rect key="frame" x="0.0" y="0.0" width="127" height="123"/>
                                         </imageView>
                                     </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="QbM-s2-SA3" firstAttribute="top" secondItem="zAT-Im-9jC" secondAttribute="top" id="3fl-xo-AMo"/>
+                                    <constraint firstAttribute="trailing" secondItem="QbM-s2-SA3" secondAttribute="trailing" id="5pB-FV-20R"/>
+                                    <constraint firstItem="QbM-s2-SA3" firstAttribute="leading" secondItem="zAT-Im-9jC" secondAttribute="leading" id="Hc8-Q8-NR7"/>
+                                    <constraint firstAttribute="bottom" secondItem="QbM-s2-SA3" secondAttribute="bottom" id="ffl-Ia-QaT"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="memeImageView" destination="QbM-s2-SA3" id="VIv-qc-35w"/>
                                 </connections>

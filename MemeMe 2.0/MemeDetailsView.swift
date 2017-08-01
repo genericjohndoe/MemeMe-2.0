@@ -20,6 +20,7 @@ class MemeDetailsView: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
         memeImage!.image = meme.meme
+        memeImage!.contentMode = .scaleAspectFit
     }
     
     override func viewWillDisappear(_ animated: Bool) {

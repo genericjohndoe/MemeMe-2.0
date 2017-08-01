@@ -96,6 +96,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.cgRectValue.height
+        
     }
     
     func keyboardWillHide(_ notification:Notification) {

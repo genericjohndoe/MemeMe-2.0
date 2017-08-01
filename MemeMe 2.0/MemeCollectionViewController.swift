@@ -36,15 +36,19 @@ class MemeCollectionViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         memes = appDelegate.memes
         collectionView?.reloadData()
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+        
         let space:CGFloat = 3.0
         let dimension = (view.frame.size.width - (2 * space)) / 3.0
         
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,14 +76,19 @@ class MemeCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return appDelegate.memes.count
+        print("collection view size \(memes.count)")
+        return memes.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
+        print("Cell is \(String(describing: cell))")
         let meme = memes[(indexPath as NSIndexPath).row]
-        
+        print("cell for item at gets called")
         cell.memeImageView?.image = meme.meme
+        print("Meme Image \(String(describing: meme.meme))")
+        print("Cell Image \(String(describing: cell.memeImageView?.image))")
+        print("Cell ImageView \(String(describing: cell.memeImageView))")
         // Configure the cell
     
         return cell
@@ -121,5 +130,4 @@ class MemeCollectionViewController: UICollectionViewController {
     
     }
     */
-
 }
