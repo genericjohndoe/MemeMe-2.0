@@ -262,26 +262,26 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MemeCollectionViewCell" reuseIdentifier="MemeCollectionViewCell" id="zAT-Im-9jC" customClass="MemeCollectionViewCell">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MemeCollectionViewCell" reuseIdentifier="MemeCollectionViewCell" id="zAT-Im-9jC" customClass="MemeCollectionViewCell" customModule="MemeMe_2_0">
                                 <rect key="frame" x="0.0" y="0.0" width="127" height="123"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="127" height="123"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QbM-s2-SA3">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XwQ-y9-ney">
                                             <rect key="frame" x="0.0" y="0.0" width="127" height="123"/>
                                         </imageView>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="QbM-s2-SA3" firstAttribute="top" secondItem="zAT-Im-9jC" secondAttribute="top" id="3fl-xo-AMo"/>
-                                    <constraint firstAttribute="trailing" secondItem="QbM-s2-SA3" secondAttribute="trailing" id="5pB-FV-20R"/>
-                                    <constraint firstItem="QbM-s2-SA3" firstAttribute="leading" secondItem="zAT-Im-9jC" secondAttribute="leading" id="Hc8-Q8-NR7"/>
-                                    <constraint firstAttribute="bottom" secondItem="QbM-s2-SA3" secondAttribute="bottom" id="ffl-Ia-QaT"/>
+                                    <constraint firstItem="XwQ-y9-ney" firstAttribute="leading" secondItem="zAT-Im-9jC" secondAttribute="leading" id="6R7-jN-4c3"/>
+                                    <constraint firstAttribute="trailing" secondItem="XwQ-y9-ney" secondAttribute="trailing" id="gbC-tz-HwA"/>
+                                    <constraint firstItem="XwQ-y9-ney" firstAttribute="top" secondItem="zAT-Im-9jC" secondAttribute="top" id="x7j-7R-Nk8"/>
+                                    <constraint firstAttribute="bottom" secondItem="XwQ-y9-ney" secondAttribute="bottom" id="xkn-Pc-rJV"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="memeImageView" destination="QbM-s2-SA3" id="VIv-qc-35w"/>
+                                    <outlet property="memeImageView" destination="XwQ-y9-ney" id="UR0-ri-C4k"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

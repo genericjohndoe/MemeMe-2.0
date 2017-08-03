@@ -27,7 +27,7 @@ class MemeCollectionViewController: UICollectionViewController {
         
 
         // Register cell classes
-        self.collectionView!.register(MemeCollectionViewCell.self, forCellWithReuseIdentifier: "MemeCollectionViewCell")
+        //self.collectionView!.register(MemeCollectionViewCell.self, forCellWithReuseIdentifier: "MemeCollectionViewCell")
 
         // Do any additional setup after loading the view.
     }
